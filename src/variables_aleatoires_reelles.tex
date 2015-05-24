@@ -1,0 +1,35 @@
+\chapter{Variables aléatoires réelles}
+
+\label{chapter:variables_aleatoires_reelles}
+
+\section{Calculs de lois}
+
+\begin{proposition}
+	Soit $X : \Omega \rightarrow \real$ une variable aléatoire réelle de loi
+	$P_{X}$.
+
+	Soit $\mu : \borelian{\real} \rightarrow [0, 1]$ une probabilité
+	tel que, pour toute fonction $h : \real \rightarrow \real$ mesurable
+	positive,
+
+	\begin{equation}
+		E(h(X)) = \int_{\real} h(x) d\mu
+	\end{equation}
+
+	Alors $\mu = P_{X}$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+
+\begin{exercice}
+	Soit $X$ une variable aléatoire réelle. Calculer la loi de $Y$ pour les cas
+	suivants.
+	\begin{itemize}
+		\item $X \varFollow \lawNormal{0}{1}$ et $Y := X^{2}$.
+		\item $X \varFollow \lawUniform{[0, 1]}$ et $Y := \max(X, -X)$.
+		\item $X \varFollow \lawCauchy$ et $Y := \frac{1}{X}$.
+	\end{itemize}
+\end{exercice}

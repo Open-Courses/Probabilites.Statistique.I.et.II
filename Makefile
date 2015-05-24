@@ -1,5 +1,5 @@
 SRC_DIR	= src
-NAME	= Proba.II
+NAME	= Probabilites.et.Statistiques
 CC		= pdflatex
 SRC		= $(NAME).tex
 
