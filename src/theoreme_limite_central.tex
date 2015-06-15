@@ -1,3 +1,232 @@
 \chapter{Théorème limite centrale}
 
 \label{chapter:theoreme_limite_centrale}
+
+\section{Convergence en loi}
+
+\begin{definition}
+	Soit $(X_{n})_{n \in \naturel}$ une suite de variables aléatoires réelles et
+	soit $X$ une autre variable aléatoire réelle.
+
+	On dit que \textbf{$X_{n}$ converge en loi vers $X$} si
+	pour toute fonction $\GSfunction{f}{\real}{\real}$ continue et bornée, on a
+
+	\begin{equation}
+		\int_{\real} f(x) dP_{X_{n}} \rightarrow \int_{\real} f(x) dP_{X}
+	\end{equation}
+
+	On dit aussi que \textbf{$X_{n}$ converge en distribution} ou \textbf{converge
+	faiblement} ou encore \textbf{converge étroitement vers $X$}.
+\end{definition}
+
+\begin{remarque}
+	Si $f(x) = e^{itx}$, on obtient
+	\begin{align}
+		\int_{\real} e^{itx} dP_{X_{n}} &\rightarrow \int_{\real} e^{itx} dP_{X}
+	\end{align}
+	C'est-à-dire
+	\begin{align}
+		\phi_{X_{n}}(t) &\rightarrow \phi_{X}(t)
+	\end{align}
+
+	Donc, si $X_{n}$ converge en loi vers $X$, alors la suite $\phi_{X_{n}}$
+	converge simplement vers $\phi_{X}$.
+\end{remarque}
+
+\begin{remarque}
+	\begin{enumerate}
+		\item Les variables aléatoires $X_{n}$ ne sont pas forcément définies sur un même
+		$\Omega$. Nous ne regardons que la loi à travers l'intégrale. Cela
+		différencie cette notion de convergence par rapport aux autres car les
+		autres demandaient que les variables de la suite soient définies sur le même
+		$\Omega$.
+		\item L'ensemble des fonctions continues bornées de $\real$ dans $\real$, noté
+		$\mathcal{C}_{b}(\real)$ forment un espace de Banach.
+	\end{enumerate}
+\end{remarque}
+
+\begin{remarque}
+	On a $X_{n}$ converge en loi vers $X$ ssi pour toute fonction $f \in
+	\mathcal{C}_{b} (\real)$
+
+	\begin{equation}
+		\int_{\Omega} f(X_{n}) dP_{X_{n}} \rightarrow \int_{\Omega} f(X) dP_{X}
+	\end{equation}
+
+	ou de manière équivalente, en se rappelant la définition d'espérance d'une
+	variable aléatoire réelle
+
+	\begin{equation}
+		E(f(X_{n})) \rightarrow E(f(X))
+	\end{equation}
+\end{remarque}
+
+Quel est le lien entre la convergence en loi et les autres ?
+
+\begin{proposition}
+	Soit $(X_{n})_{n \in \naturel}$ une suite de variables aléatoires réelles et
+	$X$ une autre variable aléatoire réelle.
+
+	Si $X_{n}$ converge en loi vers $X$, alors $X_{n}$ converge en probabilité
+	vers $X$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+\begin{remarque}
+	La réciproque est fausse. En effet, si on prend la suite $X_{n} = (-1)^{n}$
+	où $X$ est une variable aléatoire réelle de loi normale centrée réduite,
+	alors $X_{n}$ converge en loi vers $X$ ainsi que $-X$. Or, la limite de la
+	converge en proba est unique.
+
+	En particulier, nous venons de remarquer à travers cet exemple que
+	\textbf{la limite d'une suite qui converge en loi n'est pas unique}.
+\end{remarque}
+
+On obtient quand même quelque résultat pour des convergences spécifiques.
+
+\begin{proposition}
+	Soit $(X_{n})_{n \in \naturel}$ une suite de variables aléatoires réelles et
+	$c$ une constante.
+
+	Si $X_{n}$ converge en loi vers $c$, alors $X_{n}$ converge en probabilité
+	vers $c$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+Donnons une équivalence lorsque nous travaillons avec des variables aléatoires
+réelles discrètes.
+
+\begin{proposition}
+	Soit $(X_{n})_{n \in \naturel}$ une suite de variables aléatoires réelles
+	discrètes et $X$ une autre variable aléatoire réelle discrète.
+
+	Alors, les assertions suivantes sont équivalentes.
+
+	\begin{enumerate}
+		\item $X_{n}$ converge en loi vers $X$.
+		\item pour tout $k \in \naturel$, $P(X_{n} = k) \rightarrow P(X = k)$
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+Nous avons remarqué précédemment que si une suite $X_{n}$ convergeait
+en loi vers $X$, alors la suite des fonctions caractéristiques des $X_{n}$
+convergeait simplement vers la fonction caractéristique de $X$.
+
+En réalité, la condition est suffisante, et nous obtenons donc le théorème suivant.
+
+\begin{theorem} [Paul-Lévy]
+	Soit $(X_{n})_{n \in \naturel}$ une suite de variables aléatoires réelles et
+	$X$ une autre variable aléatoire réelle.
+
+	Alors, les assertions suivantes sont équivalentes.
+
+	\begin{enumerate}
+		\item $X_{n}$ converge en loi vers $X$.
+		\item la suite des fonctions caractéristiques $\phi_{X_{n}}$ convergent
+			simplement vers $\phi_{X}$, la fonction caractéristique de $X$.
+	\end{enumerate}
+\end{theorem}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+Donnons une autre équivalence, mais par rapport aux fonctions de répartition.
+
+\begin{theorem}
+	Soit $(X_{n})_{n \in \naturel}$ une suite de variables aléatoires réelles et
+	$X$ une autre variable aléatoire réelle \textbf{tel que $F_{X}$ est
+continue}.
+
+	Alors, les assertions suivantes sont équivalentes.
+
+	\begin{enumerate}
+		\item $X_{n}$ converge en loi vers $X$.
+		\item la suite des fonctions de répartition $F_{X_{n}}$ convergent simplement
+			vers $F_{X}$, la fonction de répartition de $X$.
+	\end{enumerate}
+\end{theorem}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+Cependant, nous pouvons restreindre l'hypothèse de continuité en certains
+points.
+
+\begin{proposition}
+	Soit $(X_{n})_{n \in \naturel}$ une suite de variables aléatoires réelles et
+	$X$ une autre variable aléatoire réelle tel que $X_{n}$ converge en loi vers
+	$X$.
+
+	\begin{enumerate}
+		\item Si $F_{X}$ est continue en $x$, alors $P(X_{n} \leq x) \rightarrow
+			P(X \leq x)$.
+		\item Si $F_{X}$ est continue en $x$, alors $P(X_{n} < x) \rightarrow
+			P(X < x)$.
+		\item Si $F_{X}$ est continue en $a$ et $b$, alors $P(X_{n} \in [a, b])
+			\rightarrow P(X \in [a, b])$.
+	\end{enumerate}
+
+	En particulier, on a les assertions suivantes qui sont équivalentes,
+	découlant de cette
+	proposition et de la précédente.
+
+	\begin{enumerate}
+		\item $X_{n}$ converge en loi vers $X$.
+		\item pour tout $a, b \in \real$, $P(X_{n} \in [a, b]) \rightarrow P(X \in [a,
+			b])$.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+\section{Enoncé du théorème de limite central}
+
+\begin{theorem}
+	Soit $(X_{n})_{n \in \naturel}$ une suite de variables aléatoires réelles
+	iid.
+
+	Posons $E(X.) = \mu$, $Var(X.) = \sigma^{2}$ et
+	\begin{equation}
+		S_{n} = \sum_{i = 1}^{n} X_{n}
+	\end{equation}
+
+	Alors, la suite
+
+	\begin{equation}
+		\overset{\sim}{S_{n}} := \frac{S_{n} - n \mu}{\sigma \sqrt{n}}
+	\end{equation}
+
+	converge normalement vers $\lawNormal{0}{1}$, la loi normale centrée réduite.
+\end{theorem}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi

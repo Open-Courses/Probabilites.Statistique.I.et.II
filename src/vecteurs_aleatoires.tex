@@ -30,6 +30,7 @@ Il en découle immédiatement la proposition suivante.
 \begin{proof}
 
 \end{proof}
+\fi
 
 Nous définissons alors naturellement la loi d'un vecteur aléatoire.
 
@@ -65,6 +66,7 @@ Nous définissons alors naturellement la loi d'un vecteur aléatoire.
 \begin{proof}
 
 \end{proof}
+\fi
 
 Comme nous avons fait pour les variables aléatoires réelles dans le chapitre
 \ref{chapter:variables_aleatoires_reelles}, nous allons discerner deux
@@ -73,12 +75,12 @@ types de vecteurs aléatoires.
 \begin{definition}
 	Soit $X = (X_{1}, \cdots, X_{d})$ un vecteur aléatoire.
 
-	\begin{itemize}
+	\begin{enumerate}
 		\item On dit que $X$ est \textbf{(un vecteur aléatoire) discret} si sa
 			loi est discrète.
-		\item On dit que $X$ est \textbf{un vecteur aléatoire continue} si sa
+		\item On dit que $X$ est \textbf{(un vecteur aléatoire) continue} si sa
 			loi est continue.
-	\end{itemize}
+	\end{enumerate}
 \end{definition}
 
 \begin{definition}
@@ -94,8 +96,9 @@ types de vecteurs aléatoires.
 	Alors
 
 	\begin{equation}
-		P_{X_{k}} = P_{X}(\overbrace{\real \cartprod \cdots \cartprod \real}^{d - 1 \text{ fois}},
-	A \cartprod \real \cartprod \cdots \cartprod \real)
+		P_{X_{k}}(A) = P_{X}(\overbrace{\real \cartprod \cdots \cartprod \real}^{k - 1 \text{ fois}}
+		\cartprod A \cartprod \overbrace{\real \cartprod \cdots \cartprod \real}^{d - k
+			\text{ fois}})
 	\end{equation}
 \end{proposition}
 
@@ -103,25 +106,32 @@ types de vecteurs aléatoires.
 \begin{proof}
 
 \end{proof}
+\fi
 
 \begin{corollary}
 	Soit $X = (X, Y)$ un vecteur aléatoire discret.
 
-	Alors $X \varIndependant Y$ ssi les produits des probabilités des lois
-	marginales donnent la loi conjointe.
+	Alors, les assertions suivantes sont équivalentes.
+	\begin{enumerate}
+		\item $X \varIndependant Y$.
+		\item les produits des probabilités des lois marginales donnent la loi
+			conjointe.
+	\end{enumerate}
 \end{corollary}
 
 \ifdefined\outputproof
 \begin{proof}
 
 \end{proof}
+\fi
 
 Nous pouvons alors généraliser le théorème du transfert vu dans le cas des
 variables aléatoires réelles.
 
 \begin{theorem} [Théorème du transfert]
 	Soit $X = (X_{1}, \cdots, X_{d})$ un vecteur aléatoire.
-	Soit $h : \real^{d} \rightarrow \real$ mesurable (pour la tribu borélienne).
+	Soit $h : (\real^{d}, \borelian{\real^{d}}) \rightarrow (\real,
+	\borelian{\real})$ mesurable.
 
 	Alors:
 
@@ -135,6 +145,7 @@ variables aléatoires réelles.
 \begin{proof}
 
 \end{proof}
+\fi
 
 % Page 6 Résumé Justine
 
@@ -168,33 +179,37 @@ variables aléatoires réelles.
 \begin{proof}
 
 \end{proof}
+\fi
 
-\subsection{Covariance d'un vecteur aléatoire}
+\subsection{Matrice de covariance d'un vecteur aléatoire}
 
 \begin{definition}
 	Soient $X$ et $Y$ deux variables aléatoires de carré intégrable.
 
-	\textbf{La covariance de $X$ et $Y$}, noté $Cov(X, Y)$, est définie par le
-	réel $E( (X - E(X)) (Y - E(Y)) )$.
+	\textbf{La covariance de $X$ et $Y$}, notée $Cov(X, Y)$, est définie par
+	\begin{equation}
+		Cov(X, Y) = E( (X - E(X)) (Y - E(Y)) )
+	\end{equation}
 \end{definition}
 
 \begin{proposition}
 	Soient $X, Y$ et $Z$ trois variables aléatoires de carré intégrable, et deux
 	réels $a$ et $b$.
 
-	\begin{itemize}
+	\begin{enumerate}
 		\item $Cov(X, X) = Var(X)$
 		\item $Cov(X, Y) = E(XY) - E(X) E(Y)$
 		\item $Cov(X, Y) = Cov(Y, X)$
 		\item $Cov(aX + bY, Z) = a Cov(X, Z) + b Cov(Y, Z)$
 		\item $\abs{Cov(X, Y)} \leq \sqrt{Var(X)} \sqrt{Var(Y)}$
-	\end{itemize}
+	\end{enumerate}
 \end{proposition}
 
 \ifdefined\outputproof
 \begin{proof}
 
 \end{proof}
+\fi
 
 \begin{proposition}
 	Soient $X_{1}, \cdots, X_{d}$ des variables aléatoires réelles de carré intégrable.
@@ -202,7 +217,7 @@ variables aléatoires réelles.
 	Alors
 	\begin{equation}
 		Var(X_{1} + \cdots + X_{d}) = \sum_{i = 1}^{d} Var(X_{i}) + 2
-		\sum_{1 \leq j, k \leq d} Cov(X_{j}, X_{k})
+		\sum_{1 \leq j < k \leq d} Cov(X_{j}, X_{k})
 	\end{equation}
 \end{proposition}
 
@@ -210,6 +225,7 @@ variables aléatoires réelles.
 \begin{proof}
 
 \end{proof}
+\fi
 
 \begin{definition}
 	Soient $X, Y$ deux variables aléatoires réelles.
@@ -220,11 +236,21 @@ variables aléatoires réelles.
 \begin{remarque}
 	Soient $X, Y$ deux variables aléatoires réelles.
 
-	\begin{itemize}
-		\item $X$ et $Y$ non corrélés ssi $E(XY) = E(X) E(Y)$ ssi $Var(X + Y) =
-			Var(X) + Var(Y)$.
+	Alors, les assertions suivantes sont équivalentes.
+
+	\begin{enumerate}
+		\item $X$ et $Y$ sont non corrélés
+		\item $E(XY) = E(X) E(Y)$
+		\item $Var(X + Y) = Var(X) + Var(Y)$.
+	\end{enumerate}
+\end{remarque}
+
+\begin{remarque}
+	Soient $X, Y$ deux variables aléatoires réelles.
+
+	\begin{enumerate}
 		\item Si $X \varIndependant Y$ alors $X$ et $Y$ sont non corrélés.
-	\end{itemize}
+	\end{enumerate}
 \end{remarque}
 
 \begin{definition}
@@ -243,17 +269,18 @@ variables aléatoires réelles.
 \begin{proposition}
 	Soit $X = (X_{1}, \cdots, X_{d})$ un vecteur aléatoire de carré intégrable.
 
-	\begin{itemize}
+	\begin{enumerate}
 		\item $K_{X}$ est une matrice carrée, symétrique, avec les variances des
 			$X_{k}$ sur sa diagonale.
 		\item $K_{X}$ diagonale ssi les $X_{k}$ sont deux à deux indépendants.
-	\end{itemize}
+	\end{enumerate}
 \end{proposition}
 
 \ifdefined\outputproof
 \begin{proof}
 
 \end{proof}
+\fi
 
 \begin{lemma}
 	Soit $X = (X_{1}, \cdots, X_{d})$ un vecteur aléatoire de carré intégrable.
@@ -265,6 +292,7 @@ variables aléatoires réelles.
 \begin{proof}
 
 \end{proof}
+\fi
 
 \begin{proposition}
 	Soit $X = (X_{1}, \cdots, X_{d})$ un vecteur aléatoire de carré intégrable.
@@ -279,6 +307,7 @@ variables aléatoires réelles.
 \begin{proof}
 
 \end{proof}
+\fi
 
 \begin{definition}
 	Une matrice carrée $M \in \matrixSpace{d}{\real}$ est dite
@@ -296,6 +325,7 @@ variables aléatoires réelles.
 \begin{proof}
 
 \end{proof}
+\fi
 
 \begin{theorem}
 	Soit $\mu \in \real^{d}$ et $K$ une matrice $d \cartprod d$ symétrique,
@@ -309,6 +339,7 @@ variables aléatoires réelles.
 \begin{proof}
 
 \end{proof}
+\fi
 
 
 \section{Fonctions caractéristiques}
@@ -335,7 +366,7 @@ vecteur aléatoire donné.
 \end{definition}
 
 \begin{remarque}
-	\begin{itemize}
+	\begin{enumerate}
 		\item \ref{equation:definition_fonction_caracteristique} est une
 			intégrale complexe. On a donc
 			\begin{equation}
@@ -346,39 +377,39 @@ vecteur aléatoire donné.
 			variable aléatoire réelle, $\phi_{X}$ existe.
 		\item Si $X \varFollow \rho$ où $\rho$ est une densité, alors $\phi_{X}(t) = \int_{\real} e^{itx}
 			\rho(x) dx$
-	\end{itemize}
+	\end{enumerate}
 \end{remarque}
 
 \begin{exemple}
-	\begin{itemize}
+	\begin{enumerate}
 		\item Bernouilli $\lawBernouilli{p}$: $\phi_{X}(t) = (1 - p) + p e^{it}$
 		\item Binomiale $\lawBinomial{n}{p}$: $\phi_{X}(t) = ( (1 - p) + p e^{it})^{n}$
 		\item Poisson $\lawPoisson{\lambda}$: $\phi_{X}(t) = e^{\lambda (e^{it} - 1)}$
-		\item Exponentielle $\lawExponential{\lambda})$: $\phi_{X}(t) = \frac{\lambda}{\lambda
+		\item Exponentielle $\lawExponential{\lambda}$: $\phi_{X}(t) = \frac{\lambda}{\lambda
 			- it}$
 		\item Cauchy: $\phi_{X}(t) = e^{-\abs{t}}$.
 		\item Uniforme: $\phi_{X}(t) = \frac{e^{itb} - e^{ita}}{it (b - a)}$
-	\end{itemize}
+	\end{enumerate}
 \end{exemple}
 
 \begin{proposition}
-	\begin{itemize}
+	\begin{enumerate}
 		\item $\phi_{X}(0) = 1$
 		\item $\abs{\phi_{X}(t)} \leq 1$
 		\item $\phi_{X}$ est continue
 		\item $\phi_{aX + b}(t) = e^{itb} \phi_{X}(at)$
-	\end{itemize}
+	\end{enumerate}
 \end{proposition}
 
 \begin{theorem}
 	Soit $X$ une variable aléatoire. Alors:
 
-	\begin{itemize}
+	\begin{enumerate}
 		\item Si $X \varFollow \lawNormal{0}{1}$, alors $\phi_{X}(t) =
 			e^{-\frac{t^{2}}{2}}$.
 		\item Si $X \varFollow \lawNormal{\mu}{\sigma^{2}}$, alors $\phi_{X}(t)
 			= e^{it \mu - \frac{\sigma^{2}t^{2}}{2}}$.
-	\end{itemize}
+	\end{enumerate}
 \end{theorem}
 
 \begin{theorem}
@@ -403,12 +434,12 @@ vecteur aléatoire donné.
 \end{theorem}
 
 \begin{proposition}
-	\begin{itemize}
+	\begin{enumerate}
 		\item $E(\abs{X}) < \infty$, alors $\phi_{X} \in \mathcal{C}^{1}$ et
 			$E(X) = -i \phi_{X}'(0)$.
 		\item Si $E(\abs{X}^{n}) < \infty$, alors $\phi_{X} \in
 			\mathcal{C}^{n}$ et $E(X^{n}) = (-i)^{n} {\phi^{n}}_{X}'(0)$.
-	\end{itemize}
+	\end{enumerate}
 \end{proposition}
 
 Généralisons maintenant la définition de fonction caractéristique aux vecteurs
@@ -431,13 +462,13 @@ aléatoires.
 	Posons $X = (X_{1}, \cdots, X_{d})$.
 
 	Alors, les assertions suivantes sont équivalentes
-	\begin{itemize}
+	\begin{enumerate}
 		\item Pour tout $u = (u_{1}, \cdots, u_{d}) \in \real^{d}$,
 				\begin{equation}
 					\phi_{X}(u) = \phi_{X_{1}}(u_{1}) \cdots \phi_{X_{d}}(u_{d})
 				\end{equation}
 		\item Les $X_{i}$ sont indépendants.
-	\end{itemize}
+	\end{enumerate}
 \end{theorem}
 
 \section{Vecteurs gaussiens}
@@ -466,11 +497,11 @@ aléatoires.
 
 \begin{proposition}
 	Soit $X = (X_{1}, \cdots, X_{d})$ un vecteur aléatoire.
-	\begin{itemize}
+	\begin{enumerate}
 		\item Si $X$ est gaussien, alors pour toute matrice $A \in \matrixSpace{d}{\real}$, le vecteur aléatoire $Y := A
 			X^{t}$ est gaussien.
 		\item Si les $X_{k}$ sont iid de loi gaussienne, alors $X$ est gaussien.
-	\end{itemize}
+	\end{enumerate}
 \end{proposition}
 
 \begin{remarque}
@@ -487,18 +518,19 @@ aléatoires.
 	Soit $X \varFollow \lawNormal{\mu}{K}$ un vecteur gaussien. Les assertions
 	suivantes sont équivalentes.
 
-	\begin{itemize}
+	\begin{enumerate}
 		\item $X$ a une densité.
 		\item $K$ est inversible.
 		\item $K$ est définie positive.
-	\end{itemize}
+	\end{enumerate}
 
-	De plus, la densité de $X$ est donné par
+	De plus, la densité de $X$ est donnée par
 
 	\begin{equation}
 		\rho(x) = \frac{1}{\sqrt{2 \pi}^{d}} \frac{1}{\sqrt{det(K)}}
-		e^{\frac{-1}{2} (X - \mu) K^{-1} (X - mu)^{t}}
+		e^{\frac{-1}{2} (x - \mu) K^{-1} (x - \mu)^{t}}
 	\end{equation}
+	pour tout $x \in \real^{d}$ si $X = (X_{1}, \cdots, X_{d})$.
 \end{proposition}
 
 \begin{proposition}
@@ -523,6 +555,7 @@ aléatoires.
 	l'espace du vecteur gaussien, nous avons que la loi est déterminée par ces
 	deux dernières.
 \end{proof}
+\fi
 
 \begin{exemple}
 	Soient $X \varFollow \lawNormal{0}{2}$ et $Y \varFollow \lawNormal{1}{3}$
@@ -568,9 +601,9 @@ aléatoires.
 	Soit $X = (X_{1}, \cdots, X_{d})$ un vecteur aléatoire gaussien.
 	Les assertions suivantes sont équivalentes.
 
-	\begin{itemize}
+	\begin{enumerate}
 		\item Les $X_{k}$ sont indépendants.
 		\item Les $X_{k}$ sont non-corrélés deux à deux.
 		\item $K_{X}$ est diagonale.
-	\end{itemize}
+	\end{enumerate}
 \end{theorem}
